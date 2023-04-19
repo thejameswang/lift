@@ -1,106 +1,62 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  TouchableHighlight,
-  TouchableOpacity,
-  Alert,
-  Button,
-  Platform,
-} from "react-native";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import {
-  useDimensions,
-  useDeviceOrientation,
-} from "@react-native-community/hooks";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default function App() {
-  console.log(useDeviceOrientation());
-  const handlePress = () => {
-    console.log("image pressed");
-  };
+import StartWorkoutScreen from "./screens/StartWorkoutScreen";
+import FeedScreen from "./screens/FeedScreen";
+import Navbar from "./components/Navbar";
 
-  const handleYesPress = () => {
-    console.log("you is a bitch");
-  };
+const feedName = "Feed";
+const workoutName = "Workout";
+const startWorkoutName = "StartWorkout";
+const groupsName = "Groups";
+const youName = "You";
 
-  const handleNoPress = () => {
-    console.log("you probably still a bitch");
-  };
-  const handleButtonPress = () => {
-    if (Platform.OS === "web") {
-      alert("love me");
-    } else {
-      Alert.prompt("My title", "my message", (text) => console.log(text));
-    }
-    // Alert.alert("Lift me Up", "You got this", [
-    //   {
-    //     text: "Yes",
-    //     onPress: () => {
-    //       console.log("Yes Pressed");
-    //     },
-    //   },
-    //   {
-    //     text: "No",
-    //     onPress: () => {
-    //       console.log("No Pressed");
-    //     },
-    //   },
-    // ]);
-  };
+const Tab = createBottomTabNavigator();
 
+function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1} onPress={handlePress}>
-        Project L1ft 1
-      </Text>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.button}
-        onPress={handleButtonPress}
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName={startWorkoutName}
+        style={{ backgroundColor: "#313131" }}
+        screenOptions={({ route }) => ({
+          tabBarStyle: {
+            height: 90,
+            paddingHorizontal: 5,
+            paddingTop: 0,
+            backgroundColor: "#313131",
+            position: "absolute",
+            borderTopWidth: 0,
+          },
+          tabBarIcons: ({ focused, color, size }) => {
+            let iconName;
+            let rn = route.name;
+
+            if (rn === feedName) {
+              iconName = focused ? "home" : "home-outline";
+            } else if (rn === workoutName) {
+              iconName = focused ? "barbell" : "barbell-outline";
+            } else if (rn === startWorkoutName) {
+              iconName = focused ? "ellipse" : "ellipse-outline";
+            } else if (rn === groupsName) {
+              iconName = focused ? "people" : "people-outline";
+            } else if (rn === youName) {
+              iconName = focused ? "person" : "person-outline";
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "#B31C45",
+          tabBarInactiveTintColor: "#F2F2F2",
+        })}
       >
-        <Text style={styles.save}>Save</Text>
-      </TouchableOpacity>
-      <TouchableHighlight onPress={handlePress}>
-        <Image
-          blurRadius={3}
-          source={{
-            width: 200,
-            height: 300,
-            uri: "https://picsum.photos/200/300",
-          }}
-        />
-      </TouchableHighlight>
-    </SafeAreaView>
+        <Tab.Screen name="Feed" component={FeedScreen} />
+        <Tab.Screen name="Start Workout" component={StartWorkoutScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  button: {
-    marginTop: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 5,
-    backgroundColor: "black",
-  },
-  save: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: "bold",
-    letterSpacing: 0.25,
-    color: "white",
-  },
-});
+export default App;
