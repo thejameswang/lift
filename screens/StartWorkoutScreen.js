@@ -38,65 +38,17 @@ export default function WorkoutScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1} onPress={handlePress}>
-        Project L
-      </Text>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.button}
-        onPress={handleButtonPress}
-      ></TouchableOpacity>
-
-      {/* <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.button}
-        onPress={handleButtonPress}
-      >
-        <Text style={styles.save}>Save</Text>
-      </TouchableOpacity>
-      <TouchableHighlight onPress={handlePress}>
-        <Image
-          blurRadius={3}
-          source={{
-            width: 200,
-            height: 300,
-            uri: "https://picsum.photos/200/300",
-          }}
-        />
-      </TouchableHighlight> */}
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text numberOfLines={1}>Feed Screen</Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  icon: {
-    width: 21,
-    height: 10.5,
-  },
-
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#212121",
     justifyContent: "center",
     alignItems: "center",
   },
-
-  // button: {
-  //   marginTop: 15,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   paddingVertical: 12,
-  //   paddingHorizontal: 32,
-  //   borderRadius: 4,
-  //   elevation: 5,
-  //   backgroundColor: "black",
-  // },
-  // save: {
-  //   fontSize: 16,
-  //   lineHeight: 21,
-  //   fontWeight: "bold",
-  //   letterSpacing: 0.25,
-  //   color: "white",
-  // },
 });
