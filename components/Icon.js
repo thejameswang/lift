@@ -4,9 +4,7 @@ import { StyleSheet, View, Image } from "react-native";
 
 const Icon = (props) => {
   let iconName = props.iconName;
-  let width = props.width;
-  let height = props.height;
-  let size = props.height;
+
   return (
     <View>
       <Image
@@ -18,19 +16,3 @@ const Icon = (props) => {
 };
 
 export default Icon;
-
-//   renderIcon = (iconName, width, height) => {
-//     iconName = this.props.iconName;
-//     width = this.props.width;
-//     height = this.props.height;
-//     return (
-//       <Image
-//         style={(width, height)}
-//         source={require(`../assets/icons/${iconName}.png`)}
-//       />
-//     );
-//   };
-
-//   render() {
-//     <View>{this.renderIcon}</View>;
-//   }
