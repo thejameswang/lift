@@ -9,6 +9,11 @@ import {
 
 import * as Google from "expo-auth-session/providers/google";
 import AuthSession from "expo-auth-session";
+import Config from "react-native-config";
+
+const androidId = Config.androidClientId;
+const iosId = Config.iosClientId;
+const expoId = Config.expoClientId;
 
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
@@ -20,12 +25,9 @@ export default function LoginScreen({ navigation }) {
   const [requireRefresh, setRequireRefresh] = useState(false);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId:
-      "611671508216-8g6dmt3b8gndrnpqugdoigbgqdafp28m.apps.googleusercontent.com",
-    iosClientId:
-      "611671508216-6nkormq1bu3h3supk08d5m4b8oji4its.apps.googleusercontent.com",
-    expoClientId:
-      "611671508216-6pl92jsaluhbdod0nr05h1gnt68pua0i.apps.googleusercontent.com",
+    androidClientId: androidId,
+    iosClientId: iosId,
+    expoClientId: expoId,
   });
 
   useEffect(() => {
