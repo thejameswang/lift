@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 // import Icon from "./components/Icon";
 
 import FeedScreen from "./screens/FeedScreen";
-import WorkoutScreen from "./screens/WorkoutScreen";
+import WorkoutScreen from "./screens/WorkoutsScreen";
 import StartWorkoutScreen from "./screens/StartWorkoutScreen";
 import GroupsScreen from "./screens/GroupsScreen";
 import YouScreen from "./screens/YouScreen";
@@ -25,6 +25,7 @@ function TabNavigator() {
     <Tab.Navigator
       initialRouteName={startWorkoutName}
       screenOptions={({ route }) => ({
+        headerShown: false,
         tabBarStyle: {
           height: 90,
           paddingHorizontal: 5,

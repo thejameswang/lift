@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Monday: Legs",
+    "description": "Squat (barbell), Leg Press (Machine), and Romanian Deadlift (Barbell)",
+    "content": "This is the content of page 1.",
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Squat (Barbell)",
+        "order": 1,
+        "sets": [{ "number": 1, "weight": "135", "repititions": 5 }]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Tuesday: Pull",
+    "description": "Deadlift (barbell)",
+    "content": "This is the content of page 2.",
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Squat (Barbell)",
+        "order": 1,
+        "sets": [{ "number": 1, "weight": "135", "repititions": 5 }]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Thursday: Push",
+    "description": "Bench Press (barbell)",
+    "content": "This is the content of page 3.",
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Squat (Barbell)",
+        "order": 1,
+        "sets": [{ "number": 1, "weight": "135", "repititions": 5 }]
+      }
+    ]
+  }
+]

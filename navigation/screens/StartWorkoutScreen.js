@@ -10,43 +10,71 @@ import {
   Platform,
   Pressable,
 } from "react-native";
+import StartScreen from "./startWorkout/Start";
+import WorkoutScreen from "./startWorkout/Workout";
+import TrackerScreen from "./startWorkout/Tracker";
 
-import {
-  useDimensions,
-  useDeviceOrientation,
-} from "@react-native-community/hooks";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+const Stack = createNativeStackNavigator();
 
-export default function WorkoutScreen({ navigation }) {
-  console.log(useDeviceOrientation());
-  const handlePress = () => {
-    console.log("image pressed");
-  };
-
-  const handleYesPress = () => {
-    console.log("you is a bitch");
-  };
-
-  const handleNoPress = () => {
-    console.log("you probably still a bitch");
-  };
-  const handleButtonPress = () => {
-    if (Platform.OS === "web") {
-      alert("love me");
-    } else {
-      Alert.prompt("My title", "my message", (text) => console.log(text));
-    }
-  };
-
+export default function StartWorkoutScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text numberOfLines={1}>Feed Screen</Text>
-    </View>
+    <Stack.Navigator
+      initialRouteName={StartScreen}
+      screenOptions={({ route }) => ({})}
+    >
+      <Stack.Screen
+        name="Start"
+        options={() => ({
+          title: "Project L",
+          headerTintColor: "#F2F2F2",
+          headerStyle: {
+            backgroundColor: "#212121",
+            borderWidth: 0,
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+        })}
+        component={StartScreen}
+      />
+      <Stack.Screen
+        name="Workout"
+        options={() => ({
+          title: "Project L",
+          headerTintColor: "#F2F2F2",
+          headerStyle: {
+            backgroundColor: "#212121",
+            borderWidth: 0,
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+        })}
+        component={WorkoutScreen}
+      />
+      <Stack.Screen
+        name="Tracker"
+        options={() => ({
+          headerShown: true,
+          title: "Project L",
+          headerTintColor: "#F2F2F2",
+          headerStyle: {
+            backgroundColor: "#212121",
+            borderWidth: 0,
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+        })}
+        component={TrackerScreen}
+      />
+    </Stack.Navigator>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    color: "white",
+    height: "100%",
     backgroundColor: "#212121",
     justifyContent: "center",
     alignItems: "center",

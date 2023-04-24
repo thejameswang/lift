@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function FeedScreen({ navigation }) {
+export default function TrackerScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1}>Feed Screen</Text>
+      <Text numberOfLines={1}>Tracker Screen</Text>
     </SafeAreaView>
   );
 }
