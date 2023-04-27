@@ -9,7 +9,7 @@ import {
   Pressable,
 } from "react-native";
 
-import images from "../assets/icons";
+import images from "../../../assets/icons";
 
 import {
   useDimensions,

@@ -10,6 +10,30 @@
         "name": "Squat (Barbell)",
         "order": 1,
         "sets": [{ "number": 1, "weight": "135", "repititions": 5 }]
+      },
+      {
+        "id": 2,
+        "name": "Leg Press (Machine)",
+        "order": 1,
+        "sets": [
+          { "number": 1, "weight": "135", "repititions": 5 },
+          { "number": 2, "weight": "135", "repititions": 5 },
+          { "number": 3, "weight": "135", "repititions": 5 },
+          { "number": 4, "weight": "135", "repititions": 5 }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Hack Squat (Machine)",
+        "order": 1,
+        "sets": [
+          { "number": 1, "weight": "225", "repititions": 5 },
+          { "number": 2, "weight": "315", "repititions": 5 },
+          { "number": 3, "weight": "405", "repititions": 5 },
+          { "number": 4, "weight": "135", "repititions": 5 },
+          { "number": 5, "weight": "135", "repititions": 5 },
+          { "number": 6, "weight": "135", "repititions": 5 }
+        ]
       }
     ]
   },

@@ -3,7 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
-// import Icon from "./components/Icon";
 
 import FeedScreen from "./screens/FeedScreen";
 import WorkoutScreen from "./screens/WorkoutsScreen";
@@ -16,7 +15,6 @@ const workoutName = "Workout";
 const startWorkoutName = "Project L";
 const groupsName = "Groups";
 const youName = "You";
-import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 

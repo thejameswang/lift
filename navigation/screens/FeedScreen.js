@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, SafeAreaView } from "react-native";
 
 export default function FeedScreen({ navigation }) {
   return (

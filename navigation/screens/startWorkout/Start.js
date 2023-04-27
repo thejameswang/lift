@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Pressable,
+  ScrollView,
 } from "react-native";
 import workouttemplates from "../../../data/workouttemplates.json";
 
@@ -15,7 +16,7 @@ export default function StartScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.activeContainer}>
+      <ScrollView style={styles.activeContainer}>
         <Text style={styles.title}>Start a Workout</Text>
         <View style={styles.allWorkouts}>
           {workouttemplates.map((item) => {
@@ -37,7 +38,7 @@ export default function StartScreen({ navigation }) {
             );
           })}
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -46,8 +47,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212121",
-    borderWidth: 1,
-    borderColor: "white",
     // justifyContent: "center",
     alignItems: "center",
     display: "flex",
@@ -76,11 +75,15 @@ const styles = StyleSheet.create({
     margin: "2%",
     justifyContent: "flex-end",
     padding: 5,
+    paddingLeft: 10,
+    paddingBottom: 10,
+    marginBottom: 15,
   },
   workoutText: {
     fontSize: 18,
     color: "white",
     fontWeight: "bold",
+    marginBottom: 2,
   },
   workoutDescription: {
     color: "white",
