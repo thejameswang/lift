@@ -1,20 +1,45 @@
-import { StyleSheet, Text, SafeAreaView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import DropdownChild from "./components/TestDropdown";
 
-export default function FeedScreen({ navigation }) {
+const DropdownParent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  const options = ["Option 1", "Option 2", "Option 3"];
+
+  useEffect(() => {
+    setIsOpen(false); // close all dropdowns when one is opened
+  }, [selected]);
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1}>Feed Screen</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text style={styles.title}>Dropdowns:</Text>
+      {options.map((option, index) => (
+        <DropdownChild
+          key={index}
+          label={option}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          selected={selected}
+          setSelected={setSelected}
+        />
+      ))}
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: "white",
-    backgroundColor: "#212121",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
   },
 });
+
+export default DropdownParent;

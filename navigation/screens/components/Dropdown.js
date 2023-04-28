@@ -3,25 +3,26 @@ import { View, Text, Pressable, StyleSheet, Animated } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function Dropdown(props) {
-  const { item, incrementMax } = props;
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [dropdownHeight, setDropdownHeight] = useState(new Animated.Value(0));
+  const {
+    item,
+    incrementMax,
+    pressing,
+    isOpen,
+    onLayout,
+    toggleDropdown,
+    dropdownAnimatedHeight,
+  } = props;
+  //   const [isExpanded, setIsExpanded] = useState(false);
+  //   const [dropdownHeight, setDropdownHeight] = useState(new Animated.Value(0));
 
-  const toggleDropdown = () => {
-    setIsExpanded(!isExpanded);
-    Animated.timing(dropdownHeight, {
-      toValue: isExpanded ? 0 : 100,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
-  };
+  //   const toggleDropdown = () => {
+  //     setIsExpanded(!isExpanded);
+
+  //   };
 
   return (
     <View key={item.id} style={styles.exerciseContainer}>
-      <Pressable
-        style={styles.exerciseButtonContainer}
-        onPress={toggleDropdown}
-      >
+      <Pressable style={styles.exerciseButtonContainer} onPress={pressing}>
         {({ pressed }) => (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View style={styles.exerciseOverviewContainer}>
@@ -30,12 +31,6 @@ export default function Dropdown(props) {
             <View style={styles.exerciseRepetition}>
               <View style={styles.repitionContainer}>
                 {item.sets.map((set) => {
-                  //   if (set.weight === setCounter.repititions) {
-                  //     setCounter.count += 1;
-                  //   } else {
-                  //     setCounter.weight = set.weight;
-                  //     setCounter.count = 1;
-                  //   }
                   incrementMax();
                   return (
                     <Text key={set.number} style={styles.repitionText}>
@@ -46,7 +41,7 @@ export default function Dropdown(props) {
               </View>
               <Animated.View
                 style={{
-                  transform: [{ rotate: isExpanded ? "180deg" : "0deg" }],
+                  transform: [{ rotate: isOpen ? "180deg" : "0deg" }],
                   opacity: pressed ? 0.5 : 1,
                 }}
               >
@@ -61,7 +56,8 @@ export default function Dropdown(props) {
         )}
       </Pressable>
       <Animated.View
-        style={{ backgroundColor: "#2F2F30", height: dropdownHeight }}
+        onLayout={onLayout}
+        style={{ backgroundColor: "#2F2F30", height: dropdownAnimatedHeight }}
       >
         <Pressable onPress={() => console.log("Option 1")}>
           {({ pressed }) => (

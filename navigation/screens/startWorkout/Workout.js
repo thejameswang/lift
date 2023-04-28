@@ -5,14 +5,47 @@ import {
   View,
   SafeAreaView,
   Pressable,
+  Animated,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Dropdown from "../components/Dropdown";
 
 export default function WorkoutScreen({ route, navigation }) {
   const { id, title, description, content, exercises } = route.params.item;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownHeight, setDropdownHeight] = useState(0);
+  const [dropdownAnimatedHeight, setDropdownAnimatedHeight] = useState(
+    new Animated.Value(0)
+  );
+  const items = ["Item 1", "Item 2", "Item 3"];
+
+  useEffect(() => {
+    if (isOpen) {
+      Animated.timing(dropdownAnimatedHeight, {
+        toValue: dropdownHeight,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    } else {
+      Animated.timing(dropdownAnimatedHeight, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    }
+  }, [isOpen, dropdownHeight, dropdownAnimatedHeight]);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const onLayout = (event) => {
+    setDropdownHeight(event.nativeEvent.layout.height);
+  };
+
   const [count, setCount] = useState({ count: 1, max: 1, repititions: 0 });
 
   const incrementCount = () => {
@@ -52,10 +85,13 @@ export default function WorkoutScreen({ route, navigation }) {
               </Pressable>
             </View>
             <View style={styles.exercisesListContainer}>
-              {exercises.map((item) => {
-                let setCounter = { count: 1, max: 1, repititions: 0 };
+              {exercises.map((item, index) => {
                 return (
                   <Dropdown
+                    pressing={toggleDropdown}
+                    laid={onLayout}
+                    isOpen={isOpen}
+                    dropdownHeight={dropdownAnimatedHeight}
                     incrementMax={incrementMax}
                     item={item}
                     key={item.id}
